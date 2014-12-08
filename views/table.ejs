@@ -1,0 +1,18 @@
+<h3><%= title %></h3>
+
+<table border='1'>
+	<tr>
+		<th>Event Name</th>
+		<th>Date</th>
+		<th>Venue</th>
+	</tr>
+	<% if (obj.length) { %>
+		<% for (var i = 0; i < obj.length; i++) { %>
+			<tr>
+				<td> <%= obj[i].eventName %> </td>
+				<td> <%= obj[i].date %> </td>
+				<td> <%= obj[i].venue %> </td>
+			</tr>
+		<% } %>
+	<% } %>
+</table>
