@@ -4371,8 +4371,6 @@ input[type="submit"].btn.btn-mini {
 
 .navbar-inner {
   min-height: 40px;
-  padding-right: 20px;
-  padding-left: 20px;
   background-color: #fafafa;
   background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
@@ -4598,7 +4596,7 @@ input[type="submit"].btn.btn-mini {
   left: 0;
   display: block;
   float: left;
-  margin: 0 10px 0 0;
+  margin: 0 0 0 0;
 }
 
 .navbar .nav.pull-right {
@@ -6265,5 +6263,39 @@ a.fplogo {
 
 h3.upcoming {
   text-align: center;
+}
+
+p.noupcomingmessage {
+  text-align: center;
+}
+
+div.footer {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+div.navbar ul.nav li {
+display: table-cell;
+width: 1%;
+float: none;
+}
+
+div.navbar ul.nav li:first-child a {
+border-left: 0;
+border-radius: 3px 0 0 3px;
+}
+
+div.navbar ul.nav li.active a {
+font-weight: bold;
+text-align: center;
+border-left: 1px solid rgba(255,255,255,.75);
+border-right: 1px solid rgba(0,0,0,.1);
+}
+
+div.navbar ul.nav li a {
+font-weight: bold;
+text-align: center;
+border-left: 1px solid rgba(255,255,255,.75);
+border-right: 1px solid rgba(0,0,0,.1);
 }
 

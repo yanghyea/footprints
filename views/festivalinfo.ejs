@@ -1,3 +1,7 @@
+<% if (obj.length == 0) { %>
+	<p class="noupcomingmessage">No upcoming events! Go and add a festival!</p>
+<% } %>
+
 <ul class="eventslist">
 	<% if (obj.length) { %>
 		<% for (var i = 0; i < obj.length; i++) { %>
