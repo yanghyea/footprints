@@ -26,6 +26,37 @@
 					<a href="#"><strong><%= obj[i].eventName %></strong></a>
 					<br>
 					<%= obj[i].venue %>
+					<br>
+
+					<!-- Button trigger modal -->
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+					  Edit Event
+					</button>
+
+					<!-- Modal -->
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-dialog">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h4 class="modal-title" id="myModalLabel">Event Details</h4>
+					      </div>
+
+					      <div class="modal-body">
+					        Event Type: <input type="text" id='ctype' name="eventType" value=<%= title %> readonly> <br><br>
+									Event Name: <input type="text" id='cname' name="eventName" value=<%= obj[i].eventName %> readonly> <br><br>
+									Date: <input type= 'text' id='cdate' name='eventDate' placeholder="mm/dd/yyyy"><br><br>
+									Venue: <input type= 'text' id='cvenue' name='venue'> <br><br>
+					      </div>
+
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					        <button type="button" class="btn btn-primary" id="updateEvent">Update Changes</button>
+					        <button type="button" class="btn btn-primary" id="deleteEvent">Delete Event</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+      
 				</p>
 			</li>
 		<% } %>

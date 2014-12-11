@@ -2,26 +2,34 @@
 
 <html>
 	<head>
-		<script src='http://code.jquery.com/jquery-1.7.1.min.js'></script>
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 		<script src='models/events.js'></script>
 		<script src='routes/eventRoutes.js'></script>
 		<script src='js/eventform.js'></script>
 
 		<!-- Date Picker -->
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-	  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+	  <!-- Twitter typeahead -->
+	  <!-- // <script type="text/javascript" src="http://www.tutorialrepublic.com/examples/js/typeahead.min.js"></script> -->
+	  <!-- // <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 
     <!-- Twitter Bootstrap -->
     <link href='css/bootstrap.css' rel="stylesheet" media="screen">
     <script src='js/bootstrap.js'></script>
+    <script src='js/bootstrap.min.js'></script>
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<script type="text/javascript" src="http://www.tutorialrepublic.com/examples/js/typeahead.min.js"></script>
 
     <link rel="shortcut icon" href="img/smallprints.ico">
 		<title>footprints</title>
+
 	</head>
 
 	<body>
-
 		<div class="container">
 
 	    <div class="masthead">
@@ -51,36 +59,43 @@
 								<br><br>
 
 		Event Name: <input type= 'text' id='cname' name='eventName'> <br><br>
-		Date: <input type= 'text' id='cdate' name='eventDate'> <br><br>
+		Date: <input type= 'text' id='cdate' name='eventDate' placeholder="mm/dd/yyyy"> <br><br>
 		Venue: <input type= 'text' id='cvenue' name='venue'> <br><br> 
 
 		<!-- Buttons for CRUD functions -->
 		<form id='putForm'>
-			<button>Add New Event</button> *Input all fields to create new event
+			<button>Add New Event</button>
 		</form>
-		<form id='getForm'>
-			<button>View Event Details</button> *Input event type, event name, and event date to view details
-		</form>
-		<form id='postForm'>
-			<button>Update Event Details</button> *Input all fields to update event details
+<!-- 		<form id='postForm'>
+			<button>Update Event Details</button>
 		</form>
 		<form id='deleteForm'>
-			<button>Delete Event</button> *Input all fields to delete event
-		</form>
-		<br>
+			<button>Delete Event</button>
+		</form> -->
 
-		<form name="theForm" action="" method="get">
-	    Search Artist: <input type="text" name="theInput" id="theInput" onkeydown="onKeyDownHandler()" onkeyup="onKeyUpHandler()">
-	  </form>
+		<hr>
+
+		<div class="artistsearch">
+	    Search Artists: <input type="text" id="artistinput" onkeydown="ArtistKeyUpHandler()" onkeyup="ArtistKeyDownHandler()">
+	  </div>
 
 		<h4>Artist Display</h4>
-		<span id="hereisthelist"></span>
+		<span id="artistspan"></span>
 
-      <hr>
+    <hr>
 
-			<div class="footer">
-				&copy; 2014 Jenny Yang
-			</div>
+		<div class="venuesearch">
+	    Search Venues: <input type="text" id="venueinput" onkeydown="VenueKeyUpHandler()" onkeyup="VenueKeyDownHandler()">
+	  </div>
+
+		<h4>Venue Display</h4>
+		<span id="venuespan"></span>
+
+		<hr>
+
+		<div class="footer">
+			&copy; 2014 Jenny Yang
+		</div>
 
 		</div> <!-- container -->
 

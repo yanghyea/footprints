@@ -5,7 +5,7 @@
 ** Code from http://jqueryui.com/datepicker/
 */
 $(function() {
-	$("#cdate").datepicker();
+  $( "#cdate" ).datepicker();
 });
 
 /* Timer detects onkeydown and onkeyup event from user
@@ -14,11 +14,19 @@ $(function() {
 */
 var timer; 
 
-function onKeyUpHandler() {
+function ArtistKeyUpHandler() {
 	timer = setTimeout("getArtist()", 100);    
 };
 
-function onKeyDownHandler() {
+function ArtistKeyDownHandler() {
+	clearTimeout(timer);
+};
+
+function VenueKeyUpHandler() {
+	timer = setTimeout("getVenue()", 100);    
+};
+
+function VenueKeyDownHandler() {
 	clearTimeout(timer);
 };
 
@@ -29,11 +37,11 @@ function onKeyDownHandler() {
 function getArtist() {
 	var key = "wq4aOLmhfzcw4GTk";  // <== Songkick API Key
 	$.ajax({ 
-	  url: "http://api.songkick.com/api/3.0/search/artists.json?query="+ $('#theInput').val() + "&apikey=" + key + 
+	  url: "http://api.songkick.com/api/3.0/search/artists.json?query="+ $('#artistinput').val() + "&apikey=" + key + 
 	  			"&jsoncallback=?", 
 	  dataType: "jsonp", 
 	  success: function(data){
-			var artistlist = [];
+	  	var artistlist = [];
 			var size = 5;
 			if (data["resultsPage"].totalEntries <= 5) {
 				size = data["resultsPage"].totalEntries;
@@ -42,20 +50,31 @@ function getArtist() {
 				entry = data["resultsPage"]["results"]["artist"][i];
 				artistlist += '<li><a href="' + entry.uri + '">' + entry.displayName +'</a></li>';
 			}
-			$('#hereisthelist').html(artistlist);
-	  } 
-	}); 
+			$('#artistspan').html(artistlist);
+	  }
+	});
 }
 
 
-function displayArtists(response) {
-	console.log('made it to display artists');
-	var artistArray = [];
-	for (var i = 0; i < 10; i++) {
-		artistArray += response.data.resultsPage.results.artist[i];
-		console.log(artistArray);
-	}
-	$('#hereisthelist').html(artistArray);
+function getVenue() {
+	var key = "wq4aOLmhfzcw4GTk";  // <== Songkick API Key
+	$.ajax({ 
+	  url: "http://api.songkick.com/api/3.0/search/venues.json?query=" + $('#venueinput').val() + "&apikey=" + key + 
+	  			"&jsoncallback=?",
+	  dataType: "jsonp", 
+	  success: function(data){
+			var venuelist = [];
+			var size = 5;
+			if (data["resultsPage"].totalEntries <= 5) {
+				size = data["resultsPage"].totalEntries;
+			}
+			for (var i = 0; i < size; i++) {
+				entry = data["resultsPage"]["results"]["venue"][i];
+				venuelist += '<li><a href="' + entry.uri + '">' + entry.displayName +'</a></li>';
+			}
+			$('#venuespan').html(venuelist);
+	  } 
+	}); 
 }
 
 $(function() {
@@ -104,10 +123,11 @@ $(function() {
 	});
 
 	// POST (update) AJAX request
-	$('#postForm').submit(function(){
+	$('#updateEvent').submit(function(){
 		var query = '/events/';
 		query += $('#ctype').val() + "/" + $('#cname').val() + "?" + "eventName=" + $('#cname').val() + "&" 
 							+ "eventDate=" + $('#cdate').val() + "&" + "venue=" + $('#cvenue').val();
+		console.log("updated" + query);
 		$.ajax({
 			url: query,
 			type: 'POST',
@@ -119,9 +139,10 @@ $(function() {
 	});
 
 	// DELETE AJAX request
-	$('#deleteForm').submit(function(){
+	$('#deleteEvent').submit(function(){
 		var query = '/events/';
 		query += $('#ctype').val() + "?" + "eventName=" + $('#cname').val() + "&" + "eventDate=" + $('#cdate').val();
+		console.log("deleted" + query);
 		$.ajax({
 			url: query,
 			type: 'DELETE',
