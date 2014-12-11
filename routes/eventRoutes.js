@@ -13,7 +13,7 @@ exports.insert = function(req, res) {
 	events.insert(  req.params.eventType,
 	                req.query,
 	                function(model) {
-	                  res.render('table', {title: "Successully added event to the tracker!", obj: model});
+	                  res.render('success', {title: "Successully added event!"});
 	                }
 			          );
 }

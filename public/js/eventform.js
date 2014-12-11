@@ -88,7 +88,7 @@ $(function() {
 			url: query,
 			type: 'PUT',
 			success: function(result) {
-				$('#current').html(result);
+				$('#status').html(result);
 			}
 		});
 		return false;
