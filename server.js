@@ -1,5 +1,5 @@
 var express = require('express'),
-    concertRoutes = require('./routes/concertRoutes'),
+    eventRoutes = require('./routes/eventRoutes'),
     morgan  = require('morgan'),
     path = require('path');
 
@@ -8,47 +8,47 @@ var SimpleStaticServer = function() {
 
   // set self to the scope of the class
   var self = this;  
-  
+
   /*  ================================================================  */
   /*  App server functions (main app logic here).                       */
   /*  ================================================================  */
 
   self.app = express();
-  //  self.app.use(connect(connect.basicAuth('j', 'jmjm')))
   self.app.use(morgan('tiny')); // Log requests
   self.app.use(express.static(path.join(__dirname, 'public'))); // Process static files
 
   // Set the views directory
-self.app.set('views', __dirname + '/views');
+  self.app.set('views', __dirname + '/views');
 
-// Define the view (templating) engine
-self.app.set('view engine', 'ejs');
+  // Define the view (templating) engine
+  self.app.set('view engine', 'ejs');
 
-// Routes
-/*
-* The eventType will create a new collection within the ConcertTracker database with that name
-* For example, a Festival type will be a collection of different Festival documents
-* a CMU type will be a collection of different concerts that occured at CMU
-*/
+  // Routes
+  /*
+  * The eventType will create a new collection within the FOOTPRINTS database
+  * For example, a Festival type will be a collection of different Festival documents
+  * a Concert type will be a collection of different Concert documents
+  */
 
-//// create
-self.app.put('/concerts/:eventType', concertRoutes.insert);
+  // Create
+  self.app.put('/events/:eventType', eventRoutes.insert);
 
-//// retrieve
-self.app.get('/concerts/:eventType', concertRoutes.find);
+  // Retrieve
+  self.app.get('/events/:eventType', eventRoutes.find);
+  self.app.get('/events/:eventType/all', eventRoutes.findall);
 
-//// update
-self.app.post('/concerts/:eventType/:eventName', concertRoutes.update);
+  // Update
+  self.app.post('/events/:eventType/:eventName', eventRoutes.update);
 
-//// delete
-self.app.delete('/concerts/:eventType', concertRoutes.delete);
+  // Delete
+  self.app.delete('/events/:eventType', eventRoutes.delete);
 
-// Catch any routes not already handed with an error message
-self.app.use(concertRoutes.errorMessage);
+  // Catch any routes not already handed with an error message
+  self.app.use(eventRoutes.errorMessage);
 
 
 
-  // Start the server (starts up the sample application).
+  // Start the server (starts up the application)
   self.start = function() {
     /*
      * OpenShift will provide environment variables indicating the IP 

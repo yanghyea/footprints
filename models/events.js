@@ -2,12 +2,12 @@ var util = require("util");
 /*
  * This is the connection URL
  * Give the IP Address / Domain Name (else localhost)
- * The typical mongodb port is 27012
- * ConcertTracker is the name of the database
+ * The typical mongodb port is 27017
+ * footprints is the name of the database
  */
 
  // default to a 'localhost' configuration:
-var connection_string = '127.0.0.1:27017/footprints';
+var connection_string = 'localhost:27017/footprints';
 // if OPENSHIFT env variables are present, use the available connection info:
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
   connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
@@ -29,9 +29,12 @@ mongoClient.connect('mongodb://' + connection_string, function(err, db) {
 // INSERT
 exports.insert = function(collection, query, callback) {
 				console.log(query);
+        var eventDate = new Date(query.eventDate);
         mongoDB.collection(collection).insert(
-          query,
-          {safe: true},
+          { 'eventName' : query.eventName,
+            'eventDate' : eventDate,
+            'venue' : query.venue },
+          // {safe: true},
           function(err, crsr) {
             if (err) doError(err);
             callback(crsr);
@@ -42,20 +45,37 @@ exports.insert = function(collection, query, callback) {
 // FIND
 exports.find = function(collection, query, callback) {
 				if (query == "") {
-					var crsr = mongoDB.collection(collection(collection.find({})));
+					var crsr = mongoDB.collection(collection(collection.find({}).sort({'eventDate' : 1})));
 					crsr.toArray(function(err, docs) {
 						if (err) doError(err);
 						callback(docs);
 					});
 				}
 				else {
-	        var crsr = mongoDB.collection(collection).find(query);
+	        var crsr = mongoDB.collection(collection).find(query).sort({'eventDate' : 1});
 	        crsr.toArray(function(err, docs) {
 	          if (err) doError(err);
 	          callback(docs);
 	        });
 				}
- }
+}
+
+exports.findall = function(collection, query, callback) {
+        if (query == "") {
+          var crsr = mongoDB.collection(collection(collection.find({}).sort({'eventDate' : -1})));
+          crsr.toArray(function(err, docs) {
+            if (err) doError(err);
+            callback(docs);
+          });
+        }
+        else {
+          var crsr = mongoDB.collection(collection).find(query).sort({'eventDate' : -1});
+          crsr.toArray(function(err, docs) {
+            if (err) doError(err);
+            callback(docs);
+          });
+        }
+}
 
 // UPDATE
 exports.update = function(collection, eventName, query, callback) {

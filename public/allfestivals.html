@@ -5,7 +5,7 @@
 		<script src='http://code.jquery.com/jquery-1.7.1.min.js'></script>
 		<script src='models/events.js'></script>
 		<script src='routes/eventRoutes.js'></script>
-		<script src='js/index.js'></script>
+		<script src='js/allfestivals.js'></script>
 
     <!-- Twitter Bootstrap -->
     <link href='css/bootstrap.css' rel="stylesheet" media="screen">
@@ -16,19 +16,18 @@
 	</head>
 
 	<body>
-
 		<div class="container">
 
 	    <div class="masthead">
-				<!-- 	footprints logo taken from http://www.flaticon.com -->
+	    	<!-- 	footprints logo taken from http://www.flaticon.com -->
 	      <a class="fplogo" href='index.html'><img src="img/footprintslogo.png"></a>
 	      <div class="navbar">
 	        <div class="navbar-inner">
 	          <div class="container">
 	            <ul class="nav">
-	              <li class="active"><a href='index.html'>Home</a></li>
+	              <li><a href='index.html'>Home</a></li>
 	              <li><a href='allconcerts.html'>All Concerts</a></li>
-	              <li><a href='allfestivals.html'>All Festivals</a></li>
+	              <li class="active"><a href='allfestivals.html'>All Festivals</a></li>
 	              <li><a href='newform.html'>Create New Event</a></li>
 	              <li><a href='about.html'>About</a></li>
 	            </ul>
@@ -37,17 +36,7 @@
 	      </div> <!-- navbar -->
 	    </div>
 
-		  <!-- Upcoming events columns -->
-      <div class="row-fluid">
-        <div class="span6">
-          <h3 class="upcoming">Upcoming Concerts</h3>
-          <span id="upcomingconcerts"></span>
-        </div>
-        <div class="span6">
-          <h3 class="upcoming">Upcoming Festivals</h3>
-          <span id="upcomingfestivals"></span>
-       </div>
-      </div>
+      <span id="allfestivals"></span>
 
 			<div class="footer">
 				&copy; 2014 Jenny Yang
@@ -55,7 +44,5 @@
 
 		</div> <!-- container -->
 
-
 	</body>
 </html>
-

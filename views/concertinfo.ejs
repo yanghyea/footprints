@@ -1,7 +1,7 @@
-<h3>All <%= title %>s (<%= obj.length %>)</h3>
 <ul class="eventslist">
 	<% if (obj.length) { %>
 		<% for (var i = 0; i < obj.length; i++) { %>
+		<% if (obj[i].eventDate > Date.now()) { %>
 			<li class="concert-instance">
 				<div class="date-wrap">
 					<a class="url-date" href="#">
@@ -20,13 +20,12 @@
 					</a>
 				</div>
 				<p class="subject">
-					<% if (obj[i].eventDate > Date.now()) { %><big>Upcoming <%= title %></big><% } %>
-					<% if (obj[i].eventDate < Date.now()) { %><big>Past <%= title %></big><% } %>
 					<a href="#"><strong><%= obj[i].eventName %></strong></a>
 					<br>
 					<%= obj[i].venue %>
 				</p>
 			</li>
+			<% } %>
 		<% } %>
 	<% } %>
 </ul>

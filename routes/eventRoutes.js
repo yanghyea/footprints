@@ -1,7 +1,7 @@
-var concert = require('../models/concerts.js');
+var events = require('../models/events.js');
 
 exports.index = function(req, res) {
-	res.render('index', {title: "Concert Tracker"});
+	res.render('index', {title: "footprints"});
 }
 
 exports.newevent = function(req, res) {
@@ -10,7 +10,7 @@ exports.newevent = function(req, res) {
 
 // PUT (create) route
 exports.insert = function(req, res) {
-	concert.insert( req.params.eventType, 
+	events.insert(  req.params.eventType,
 	                req.query,
 	                function(model) {
 	                  res.render('table', {title: "Successully added event to the tracker!", obj: model});
@@ -20,17 +20,31 @@ exports.insert = function(req, res) {
 
 // GET (retrieve) route
 exports.find = function(req, res) {
-	concert.find( req.params.eventType, 
+	events.find(  req.params.eventType, 
 	              req.query,
 	              function(model) {
-									res.render('table', {title: req.params.eventType, obj: model});
+	              	if (req.params.eventType == 'Concert') {
+	              		res.render('concertinfo', {title: req.params.eventType, obj: model});
+	              	}
+	              	if (req.params.eventType == 'Festival') {
+	              		res.render('festivalinfo', {title: req.params.eventType, obj: model});
+	              	}
 	              }
+	            );
+}
+
+exports.findall = function(req, res) {
+	events.findall( req.params.eventType, 
+		              req.query,
+		              function(model) {
+	              		res.render('table', {title: req.params.eventType, obj: model});
+		              }
 	            );
 }
 
 // POST (update) route
 exports.update = function(req, res) {
-	concert.update( req.params.eventType, 
+	events.update(  req.params.eventType, 
 									req.params.eventName,
 		              req.query,
 		              function(model) {
@@ -41,7 +55,7 @@ exports.update = function(req, res) {
 
 // DELETE (destroy) route
 exports.delete = function(req, res) {
-	concert.delete( req.params.eventType, 
+	events.delete(  req.params.eventType, 
 		              req.query,
 		              function(model) {
 										res.render('success', {title: 'Successfully deleted event.'});

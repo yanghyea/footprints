@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<script src='http://code.jquery.com/jquery-1.7.1.min.js'></script>
+		<script src='models/events.js'></script>
+		<script src='routes/eventRoutes.js'></script>
+		<script src='js/eventform.js'></script>
+
+		<!-- Date Picker -->
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+	  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+    <!-- Twitter Bootstrap -->
+    <link href='css/bootstrap.min.css' rel="stylesheet" media="screen">
+    <script src='js/bootstrap.min.js'></script>
+
+    <link rel="shortcut icon" href="img/smallprints.ico">
+		<title>footprints</title>
+	</head>
+
+	<body>
+
+		<div class="container">
+
+	    <div class="masthead">
+	    	<!-- 	footprints logo taken from http://www.flaticon.com -->
+	      <a class="fplogo" href='index.html'><img src="img/footprintslogo.png"></a>
+	      <div class="navbar">
+	        <div class="navbar-inner">
+	          <div class="container">
+	            <ul class="nav">
+	              <li><a href='index.html'>Home</a></li>
+	              <li><a href='allconcerts.html'>All Concerts</a></li>
+	              <li><a href='allfestivals.html'>All Festivals</a></li>
+	              <li class="active"><a href='newform.html'>Create New Event</a></li>
+	              <li><a href='about.html'>About</a></li>
+	            </ul>
+	          </div>
+	        </div>
+	      </div> <!-- navbar -->
+	    </div>
+
+		<hr>
+
+		<!-- Event inputs -->
+		Event Type: <select id='ctype'>
+									<option value="" disabled selected>Select event type</option>
+									<option value='Concert'>Concert</option>
+									<option value='Festival'>Festival</option>
+								</select>
+								<br><br>
+
+		Event Name: <input type= 'text' id='cname' name='eventName'> <br><br>
+		Date: <input type= 'text' id='cdate' name='eventDate'> <br><br>
+		Venue: <input type= 'text' id='cvenue' name='venue'> <br><br> 
+
+		<!-- Buttons for CRUD functions -->
+		<form id='putForm'>
+			<button>Add New Event</button> *Input all fields to create new event
+		</form>
+		<form id='getForm'>
+			<button>View Event Details</button> *Input event type, event name, and event date to view details
+		</form>
+		<form id='postForm'>
+			<button>Update Event Details</button> *Input all fields to update event details
+		</form>
+		<form id='deleteForm'>
+			<button>Delete Event</button> *Input all fields to delete event
+		</form>
+		<br>
+
+		<form name="theForm" action="" method="get">
+	    Search Artist: <input type="text" name="theInput" id="theInput" onkeydown="onKeyDownHandler()" onkeyup="onKeyUpHandler()">
+	  </form>
+
+		<h4>Artist Display</h4>
+		<span id="hereisthelist"></span>
+
+      <hr>
+
+			<div class="footer">
+				&copy; 2014 Jenny Yang
+			</div>
+
+		</div> <!-- container -->
+
+	</body>
+</html>
