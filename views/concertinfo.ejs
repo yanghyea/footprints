@@ -1,4 +1,7 @@
 <ul class="eventslist">
+	<% if (obj.length == 0) { %>
+		<p>No upcoming events! Go and add an event!
+	<% } %>
 	<% if (obj.length) { %>
 		<% for (var i = 0; i < obj.length; i++) { %>
 		<% if (obj[i].eventDate > Date.now()) { %>
