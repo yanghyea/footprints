@@ -1,11 +1,11 @@
 $(function() {   // Do once original document loaded and ready
-  getAllFestivals();
+  getAllConcerts();
 });
 
-function getAllFestivals() {
+function getAllConcerts() {
 	try {
 		var query = '/events/';
-		query += 'Festival';
+		query += 'Concert';
 		query += '/all';
 		$.ajax({
 			url: query,
