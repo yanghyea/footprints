@@ -6164,6 +6164,9 @@ a.badge:focus {
   position: fixed;
 }
 
+/*--------------------------------------------*/
+/*---------------  EVENTS LIST ---------------*/
+/*--------------------------------------------*/
 ul.eventslist li {
   position: relative;
   padding-bottom: 20px;
@@ -6248,6 +6251,10 @@ li.concert-instance p.subject {
   margin-bottom: 0;
 }
 
+/*-------------------------------------------*/
+/*---------------  <BIG> font ---------------*/
+/*-------------------------------------------*/
+
 li.concert-instance p.subject big {
   text-transform: uppercase;
   color: #f80046;
@@ -6256,6 +6263,9 @@ li.concert-instance p.subject big {
   font-weight: 700;
 }
 
+/*------------------------------------------*/
+/*------------  FOOTPRINTS LOGO ------------*/
+/*------------------------------------------*/
 a.fplogo {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -6269,33 +6279,38 @@ p.noupcomingmessage {
   text-align: center;
 }
 
+/*---------------------------------------*/
+/*---------------  FOOTER ---------------*/
+/*---------------------------------------*/
 div.footer {
   margin-top: 15px;
   margin-bottom: 20px;
 }
 
+/*---------------------------------------*/
+/*---------------  NAVBAR ---------------*/
+/*---------------------------------------*/
 div.navbar ul.nav li {
-display: table-cell;
-width: 1%;
-float: none;
+  display: table-cell;
+  width: 1%;
+  float: none;
 }
 
 div.navbar ul.nav li:first-child a {
-border-left: 0;
-border-radius: 3px 0 0 3px;
+  border-left: 0;
+  border-radius: 3px 0 0 3px;
 }
 
 div.navbar ul.nav li.active a {
-font-weight: bold;
-text-align: center;
-border-left: 1px solid rgba(255,255,255,.75);
-border-right: 1px solid rgba(0,0,0,.1);
+  font-weight: bold;
+  text-align: center;
+  border-left: 1px solid rgba(255,255,255,.75);
+  border-right: 1px solid rgba(0,0,0,.1);
 }
 
 div.navbar ul.nav li a {
-font-weight: bold;
-text-align: center;
-border-left: 1px solid rgba(255,255,255,.75);
-border-right: 1px solid rgba(0,0,0,.1);
+  font-weight: bold;
+  text-align: center;
+  border-left: 1px solid rgba(255,255,255,.75);
+  border-right: 1px solid rgba(0,0,0,.1);
 }
-
