@@ -1,13 +1,5 @@
 var events = require('../models/events.js');
 
-exports.index = function(req, res) {
-	res.render('index', {title: "footprints"});
-}
-
-exports.newevent = function(req, res) {
-	res.render('eventform');
-}
-
 // PUT (create) route
 exports.insert = function(req, res) {
 	events.insert(  req.params.eventType,
